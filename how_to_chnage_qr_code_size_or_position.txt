@@ -1,0 +1,80 @@
+
+
+
+For correcting the QR code size and position 
+=============================================
+
+First i need to take a sample IP which got error while scanning the Initial Packet.
+
+to directly check and scan again the pdf i need to run the ip split utility again
+---> ----> i can take the pdf which got error from 182 and put in the place 
+\\172.27.1.245\SSI_SSDI_Projects\Hartford_Healthcare\Hartford_Scanned_Documents
+
+where we usually put documents for runnnig for ip split utility --> so execute the ip split script in the cmd of remote server--> so if again error occurred documents come as mail, it means the position of qr code need to be adjusted..US team scanning is not proper. so we need to further adjust the QR position inorder to avoid the error occurring. 
+============
+
+next if you want to change the size and place of QR code
+=======>  in my local system --> desktop --> i have folder 
+'SSA_Forms_Build_Periodically_15_min_dossi'
+
+so first take one IP of a claimant who got error and got notification as mail.
+
+take that document from 182 to local
+
+in dossi ---> fetch that claimant using the SSN in the IP
+
+in dossi --> download the current initial form to compare with the new initial form which we is going to generate.
+
+
+then come to folder in local 
+'SSA_Forms_Build_Periodically_15_min_dossi'
+
+and
+modify the code 'qr_code.rb' for changing the size of QR code
+and modify the 'fill_pdf.rb' for changing the position of QR code.
+
+
+after changing all the required 
+
+go to dossi for that claimant using SSN :
+provide tick for the field 'Generate Initial Form?' for generating new initial form.
+
+then come to the folder in local 
+'SSA_Forms_Build_Periodically_15_min_dossi'
+
+and execute the ruby code 'SSA_Forms.rb'
+
+after sucefuly executing a new initial form will be generated in dossi 
+
+so compare with the previous initial form
+
+and also repeat the same for adjusting the QR code.
+
+
+in order to check whether the scanning will be performed properly
+need to execute the ip split in 182 with the downloaded initial form
+
+so for that we need to change the name of initiak form like the iniytial packet form
+
+eg :
+
+if the newly downloaded initial form name is as below :
+
+'Elena_Jimenez_McDermott_Initial_Forms_08302024'
+
+if in 182 it is named as 'McDermott_20241028153452'
+
+currently we need to process it again we have to rename it with current date :
+
+October 29th
+eg : 'McDermott_20241029153452'
+
+and after renaming put the file into 182 -->
+
+\\172.27.1.245\SSI_SSDI_Projects\Hartford_Healthcare\Hartford_Scanned_Documents
+
+put the file in there and run the ip split once more to know whether successfully the scanning is done 'it will receive though mail'
+can change the mail id.
+
+
+
